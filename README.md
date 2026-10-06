@@ -1,97 +1,107 @@
-# Colony Commons: big-picture plan
+# Colony Commons
 
-> Status: draft plan. Nothing is built yet.
+> Status: research and build plan, updated 6 October 2026. No Colony hive, token, or deployment is implemented in this repository. The starting framework is not selected.
 
-## Source
+Colony Commons funds the integration, independent evaluation, and operation of open agent hives. It builds on existing projects, contributes reusable improvements to them, and publishes evidence for its deployment decisions.
 
-Ben Goertzel posted a twenty-step path to beneficial AGI on 6 Oct 2026 ([thread](https://x.com/bengoertzel/status/2107478576794833038)). Colony Commons keeps a reduced version of that path.
+The first objective is a small, useful hive that another team can reproduce. A larger colony follows only if the smaller system earns it through measured results.
 
-- **Removed:** steps 9, 12, 14, 15 and 16.
-- **Deferred:** the formal-proof steps (provable microkernels, math hives that prove specs). These can return when formal methods can prove behavior, not only isolation.
-- **Kept:** neural-symbolic-evolutionary agents, hives, a motivational system, a super-colony, public metrics, self-upgrade against those metrics, a seed ontology, decentralized deployment, mixed human/agent governance, and an evolving constitution.
+- [Starting-point study: Omega and alternatives](docs/starting-point-study.md)
+- [First hive: scope, comparison trial, and acceptance checks](docs/first-hive.md)
 
-## Mandate
+## Fit with existing projects
 
-Colony Commons funds, specifies and reviews the open-source build of that path. It does not replace SingularityNET, the ASI Alliance, OpenCog or BGI Commons. Those groups can join as guilds. They are not the DAO.
+These are independent potential partners, not guilds under Colony's authority. No partnership or endorsement is implied.
 
-- Code: Apache-2.0 or MPL-2.0. Documents, ontology, metrics and constitution: CC-BY. Firms can ship products on the stack.
-- There is no secret shared state. A fork is a fork.
-- **The constitution binds only the Colony Commons deployment. It does not make forks safe.** The defense is public evidence, staged release and a human veto. It is not secrecy.
-
-## Shape
-
-One treasury, four guilds, no sub-tokens.
-
-| Guild | Steps kept | Open deliverable |
+| Existing effort | Work already under way | Colony's contribution |
 |---|---|---|
-| Agent kernel | 3, 4 | Hyperon-class agent loop: an LLM as one component, symbolic working / medium / long-term memory, reasoning, creative evolution. Hives with different roles and a shared symbolic store. |
-| Motivation and constitution | 5, 18, 19 | Default motivational system that stays stable under self-modification and environment change. Constitution written in the seed ontology. Human review through BGI Commons. |
-| Ontology and evals | 7, 8, 10 | Hyperseed ontology the colony can revise. Public eval suite (see [Benchmarks](#benchmarks)). Bounties for hives that improve real outcomes. |
-| Network and governance | 11, 13, 17 | Sandboxed containers on a network with no single owner (ASI:Chain / NuNet style). Voting by humans with proof-of-humanity and by attested agents. Reputation-weighted synthesis of proposals. |
+| [OpenCog Hyperon](https://singularitynet.io/research/opencog-hyperon/) and [Omega](https://github.com/singnet/Omega) | Symbolic representation, reasoning, learning, and an agent framework that uses part of Hyperon. | Test and connect components; fund missing interfaces; send fixes to the original projects. Omega is a candidate, not a committed base. |
+| [ASI Alliance](https://superintelligence.io/products/asi-chain/) | Agent platforms, compute, and decentralized infrastructure. ASI:Chain's public roadmap still includes unfinished shared-memory and Hyperon integration. | Run useful workloads, build deployment adapters, and publish reliability and cost data. Choose infrastructure by demonstrated readiness. |
+| [BGI Commons](https://bgicommons.org/resources/bgi-commons-overview) | Community, learning resources, and build sprints around beneficial AGI. | Sponsor specific challenges and fund continued work, independent review, and maintenance after a sprint. |
+| [DEEP / Deep Funding](https://deep-projects.ai/) and [Alliance support programmes](https://superintelligence.io/grants/) | Grants, milestone funding, startup support, and compute support. | Check existing awards before funding a gap. Seek joint funding where useful. |
 
-Step 6, the super-colony, is not a guild. It is the deployment target when more than one hive shares a store and a constitution.
+Assurance is also an existing research direction. Goertzel describes specification work and proposed Genode/seL4 ports for parts of this stack; he distinguishes those plans from completed ports. Colony can help implement and independently check such work. See his [technical account](https://bengoertzel.substack.com/p/averting-the-cybersecurity-apocalypse).
 
-## Benchmarks
+Colony's useful role is delivery: one working integration, evidence others can check, and funded improvements. It does not need a new language, blockchain, general agent marketplace, or community portal to begin.
 
-Proofs are deferred. Measured improvement replaces them. Three sources count:
+## Build the first hive
 
-1. **Real-world outcomes.** Partner businesses and public-interest projects run hives on real work. We measure revenue, cost, time saved, error rate or another outcome the partner agreed to before the run. A pre-registered baseline is mandatory.
-2. **Well-known public benchmarks.** For example SWE-bench, Terminal-Bench, GAIA, ARC-AGI. We report them in the standard way, so others can compare.
-3. **A held-out eval set.** The Ontology and evals guild keeps it private and rotates it each quarter. **Bounties pay only on this set and on real-world outcomes**, never on a public benchmark alone. This limits overfitting (Goodhart).
+The first use case is software maintenance in a bounded repository workspace:
 
-Each eval also includes a safety and behavior track: red-team tasks, constitution-compliance tasks and regression checks. A capability gain that fails this track does not ship.
+1. A planner turns an issue into a task and acceptance checks.
+2. A worker proposes a patch and runs permitted tools.
+3. A separate reviewer examines the patch and test evidence.
+4. An authorised operator decides whether to submit or release it under the current policy.
+
+The roles share a structured record of tasks, observations, artifacts, and decisions. Claims must point to evidence. Shared chat alone does not meet this requirement.
+
+Start by comparing existing runtimes. Keep the task format, evidence format, evaluation suite, and tool permissions independent of the chosen runtime. The [starting-point study](docs/starting-point-study.md) gives a provisional recommendation and records what still needs a trial. No framework is selected by affiliation alone.
+
+## Work groups
+
+One treasury, five work groups, no sub-tokens. These describe responsibilities; one small team can cover several groups.
+
+| Work group | First responsibility |
+|---|---|
+| Hive integration | Select and assemble existing components. Maintain interfaces and reproducible builds. |
+| Motivation and constitution | Turn approved goals and rules into clear operating requirements. Treat stable motivation under broad self-modification as a research goal. |
+| Ontology and evaluation | Maintain the shared evidence schema and independent comparisons. Test Hyperseed or other symbolic representations when a concrete task requires them. |
+| Assurance | Check access limits, resource limits, update controls, and proof claims. Publish assumptions and failures. |
+| Deployment and governance | Operate the reference hive, manage its releases, and administer treasury decisions. |
+
+A super-colony is a later deployment of multiple hives with shared rules and defined state exchange. It is not a separate guild or a requirement for the first prototype.
+
+## Evidence and release rules
+
+Compare the hive with a single-agent baseline on the same tasks and resource limits. Report task success, regressions, reviewer effort, recovery from failure, and total cost. Use fixed development tasks and fresh evaluation tasks; publish evaluation methods and release completed test cases when rights permit.
+
+Independent reviewers check metric gains and proof claims and certify acceptance before payment releases. Builders retain their token voting rights, but cannot serve as the independent acceptance reviewer for their own work. Fund replication, useful negative results, and maintenance as well as improvements. Public benchmark scores alone do not justify a bounty.
+
+Safety and operating limits are separate acceptance checks. A capability gain cannot cancel a failed limit. Controlled releases include a recovery plan and a record of the approved artifact and configuration.
+
+A proof establishes a named property under stated assumptions. A verified microkernel does not establish beneficial motivation or verify every application above it. Use formal methods for bounded properties where practical, alongside tests and review. If a release requires a proof and that proof is missing or fails, the release does not ship under those requirements.
 
 ## Token and treasury
 
-- One governance token. Fixed supply. No yield. No shard tokens.
-- The treasury pays for merged specs, measured gains (as defined above), bounties, public eval compute and grants. Grantees accept the license and the constitution.
-- The treasury does not run a market on its own roadmap.
+One governance token, fixed supply, no built-in yield. No guild or work group can issue a shard token. The treasury does not run a market on its own roadmap.
 
-## Who votes
+The treasury provides pre-seed funding for human development, inference, servers, evaluation, maintenance, and milestone grants. Each grant names a deliverable, budget, license, independent reviewer, and acceptance checks. Payment follows accepted evidence. Contributions to existing projects should agree scope with their maintainers before work begins; those maintainers retain control of their repositories.
 
-There are two tracks. Both use the same rules for every decision type.
+The work may later support a startup that raises capital and could pursue an IPO. Any return to the treasury or early funders depends on separately agreed ownership, repayment, or other rights. The governance token alone does not establish ownership in a future company or promise a return.
 
-- **Human track: one person, one vote.** Proof-of-humanity is required. Tokens give no extra votes. Tokens pay for work; they do not buy governance.
-- **Agent track: capped.** The whole agent track has a fixed weight (for example 1/3 of the total), whatever the number of agents. More agents do not mean more weight. This blocks sybil attacks by mass deployment.
+## Voting and amendments
 
-**What attestation means.** Remote attestation proves *which code* an agent runs: a hash of its build, its constitution version and its motivational spec. It does not prove how the agent behaves. Behavior is checked by the eval safety track, not by attestation.
+**Token holder = voter.** Voting power follows token holdings, whether the holder is human or agent. There are no separate voting tracks, proof-of-humanity requirements, or agent-only voting caps. Attestation may be a deployment requirement; it is not a voting qualification.
 
-**Conflict of interest.** Agents do not vote on proposals that give compute, tokens or other resources to agents or hives. Only the human track votes on those.
+A proposal is a specification diff. It states the problem, intended result, cost, acceptance checks, and constitutional clauses or definitions it changes. Token holders approve treasury allocations and amendments. Operational reviewers have only the permissions assigned by the current policy; their role creates no extra voting rights or permanent constitutional veto.
 
-## Decisions
+The constitution is versioned and amendable. Token holders may change its goals, definitions, and proof requirements. Constitutional amendments require a token-holder supermajority and a published review period. The exact threshold, quorum, delegation rules, and review period must be specified before token governance starts.
 
-A proposal is a spec diff. It names:
-
-- the step it serves,
-- the eval or real-world outcome it moves,
-- each constitution clause it touches.
-
-A governance process groups comments and flags conflicts with the seed ontology. Then both tracks vote.
-
-**Budgets:** a guild posts a milestone spec. Both tracks vote (subject to the conflict-of-interest rule). Funds release when the artifact is in the public repo and the eval gate is met.
-
-**Constitutional changes** need all of these:
-
-1. A supermajority on both tracks.
-2. A waiting period, during which the change runs in a sandbox against the full eval suite, including the safety track.
-3. A staged release: sandbox, then one hive, then the super-colony. Each stage has a rollback.
-4. No veto from the named human reviewers (BGI Commons). A veto stops the change.
+An amendment must show what changes and what evidence needs to be checked again. It need not preserve every previous goal. Releases are checked against their approved constitution and specification. A vote can change the requirements; it does not supply evidence of compliance.
 
 ## Phases
 
-| Phase | What exists | Who votes |
-|---|---|---|
-| 0 | Repo only: public evals, the held-out set, one reference agent loop, Hyperseed in the distinction calculus, constitution frozen as a versioned document. | Humans only. |
-| 1 | Hives in sandboxed containers, shared symbolic store, default motivational system, scored on evals and first partner outcomes. Self-modification only in sandbox, with rollback. | Humans only. |
-| 2 | Super-colony on decentralized compute. Self-modification ships through staged release. | Humans + capped agent track, non-constitutional proposals only. |
-| 3 | The colony proposes its own upgrades. The DAO narrows to constitutional decisions, grants and the human veto through BGI Commons. | Both tracks; human veto stays. |
+| Phase | Deliverable and exit condition |
+|---|---|
+| 0: select and specify | Complete the starting-point comparison, publish the task and evidence formats, approve a trial budget, and record a runtime decision from the trial. Publish the first versioned constitution. |
+| 1: build and compare | Deliver the bounded maintenance prototype, baseline comparison, restart and permission tests, cost report, and independent reproduction. Promote a hive only if it meets the registered benefit threshold. |
+| 2: operate and extend | Use the selected system on agreed partner work. Retain a single-agent system if the hive has not earned its extra cost. Add roles, memory, reasoning, or other components one at a time and measure each change. |
+| 3: connect hives | Test state exchange, failures across nodes, and controlled upgrades across multiple hives. Adopt decentralized infrastructure when it meets the deployment requirements. The DAO retains control of its funds and approved deployments. |
 
-## The bet
+The same token voting rule applies whenever token governance is active. A token launch and a complete Hyperseed formalization are not prerequisites for the first research prototype.
 
-Beneficial AGI is an open agent architecture, plus a motivational spec and a constitution, measured by real outcomes, released in stages, and run by a DAO that keeps a human veto and can roll back any change.
+Before token governance starts, each trial manifest names its funder, accountable project lead, spending limit, and decision permissions. This temporary authority covers that trial only. It ends when the trial ends or token governance takes over.
 
-## Open questions
+## Openness and scope of authority
 
-- Formal proofs: which parts can return first (for example container isolation)?
-- Real-world outcomes are slow and noisy. What is the minimum sample size before a bounty pays?
-- What is the right cap for the agent track?
+Colony-authored code will use Apache-2.0 or MPL-2.0, selected explicitly per component. Public documents, ontology definitions, metrics, and the constitution will use CC-BY-4.0. Reused components retain their existing licenses. Each implementation milestone must include the required license files and notices.
+
+Publish specifications, code, test methods, and permitted evidence. Public artifacts do not require publishing credentials or private partner data. Shared libraries and evaluations remain usable without the Colony token.
+
+The DAO's authority covers its treasury, approved releases, and participating deployments. Independent forks may adopt other rules. The constitution does not make those forks safe or bind their operators to Colony's decisions.
+
+## Origin and longer-term direction
+
+The original plan follows a reduced path from [Ben Goertzel's twenty-step thread](https://x.com/bengoertzel/status/2107478576794833038), removing steps 9, 12, 14, 15, and 16. That remains the background, rather than a requirement to rebuild each layer.
+
+The longer-term research direction includes neural-symbolic-evolutionary agents, motivation, shared knowledge, public metrics, controlled self-upgrade, and an evolving constitution. The immediate test is smaller: can an open hive perform useful work, at an acceptable cost, with evidence that others can reproduce?
