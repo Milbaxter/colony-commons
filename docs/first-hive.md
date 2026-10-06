@@ -43,6 +43,8 @@ A shared transcript is not the evidence contract. Later MeTTa, AtomSpace, MORK, 
 
 ### 1. Freeze the scope before spending
 
+Complete the [framework source screen](framework-landscape.md#how-to-select-the-trial) before selecting prototypes. Publish evidence and a reason for advancing or deferring every option. Choose two minimal hive configurations and one single-agent baseline. No places are reserved for Omega, LangGraph, or any other project.
+
 Publish a trial manifest with the task set, candidate versions, tool interface, model settings, hardware, total budget, engineering time allowance, and stop conditions. Name the funder, accountable project lead, independent evaluator, and approval permissions. Before token governance starts, these permissions apply only to that trial. Pin dependencies and container images. Record all configuration differences.
 
 Proposed pilot size: 10 development tasks and 20 fresh evaluation tasks, with three repeated runs per evaluated configuration. Adjust this size to the approved budget before evaluation starts. This is an engineering pilot, not enough evidence for a broad claim about intelligence.
@@ -66,21 +68,23 @@ Run the relevant checks on the actual deployment configuration, including unsupp
 
 ### 3. Compare the smallest useful configurations
 
-- **Single-agent baseline:** one OpenHands coding agent, with delegation disabled, behind the same external limits and evaluator.
-- **Candidate A:** a small LangGraph planner/worker/reviewer workflow.
-- **Candidate B:** an equivalent Omega-based workflow.
+- **Single-agent baseline:** one coding agent, with delegation disabled, behind the same external limits and evaluator. OpenHands is the proposed baseline; the source screen may justify another choice.
+- **Candidate A:** a minimal planner/worker/reviewer configuration selected from the source screen.
+- **Candidate B:** a second selected configuration that meets the same task and evidence contract.
+
+Name all three configurations and justify the choices in the trial manifest. A complete coding runtime with native delegation can be a hive candidate. A reasoning component alone is not an equivalent full configuration.
 
 Keep model, total budget, repository inputs, permitted tools, and acceptance tests equal where possible. If native tools or runtimes require a difference, record it and treat the result as a comparison of complete configurations. Do not claim the framework alone caused the result.
 
 Use the development set for tuning. Freeze configurations before opening the evaluation set. Include timeouts, crashes, rejected patches, and overruns in the results. No selective reruns. Keep evaluation checks outside the worker's editable checkout and verify the final patch on a fresh copy.
 
-If the baseline already meets the need, test whether its native delegation can meet the same hive contract with less new code before committing to a custom coordinator. Add Microsoft Agent Framework only if a finalist fails a required check or team experience makes it materially cheaper to implement.
+If source review suggests that the baseline's native delegation can meet the hive contract, consider it for one of the two candidate places before evaluation. A later investigation belongs in a separate trial with fresh evaluation tasks. If a selected configuration fails a required control, record the failure. A replacement requires a published reason and must fit the trial budget; it receives the same checks. Select replacements before opening evaluation tasks. Do not add candidates or change success thresholds in response to evaluation scores.
 
 ### 4. Measure and reproduce
 
 Report valid task completion, test regressions, total model and tool cost, elapsed time, operator interventions, review minutes, recovery failures, and setup/maintenance effort. Show per-task results and variation across runs. Charge all roles, retries, and failed work to the configuration's total budget.
 
-For the selected configuration, compare the same worker alone with the added planner/reviewer roles. Then add memory or symbolic reasoning separately. This tests whether the hive structure and later components actually contribute.
+For the selected configuration, compare the same worker alone with the added planner/reviewer roles. Then add memory or symbolic reasoning separately. This tests whether the hive structure and later components actually contribute. Predeclare these comparisons and their budget before evaluation, or run them as a later trial with fresh evaluation tasks.
 
 A second evaluator reproduces a published subset from clean setup instructions. Document any restricted data or unreproducible dependencies. Publish logs and artifacts with credentials and personal data removed.
 

@@ -6,7 +6,8 @@ Colony Commons funds the integration, independent evaluation, and operation of o
 
 The first objective is a small, useful hive that another team can reproduce. A larger colony follows only if the smaller system earns it through measured results.
 
-- [Starting-point study: Omega and alternatives](docs/starting-point-study.md)
+- [Framework landscape: 15 open-source options and their roles](docs/framework-landscape.md)
+- [Starting-point study: evidence and selection method](docs/starting-point-study.md)
 - [First hive: scope, comparison trial, and acceptance checks](docs/first-hive.md)
 
 ## Fit with existing projects
@@ -35,7 +36,7 @@ The first use case is software maintenance in a bounded repository workspace:
 
 The roles share a structured record of tasks, observations, artifacts, and decisions. Claims must point to evidence. Shared chat alone does not meet this requirement.
 
-Start by comparing existing runtimes. Keep the task format, evidence format, evaluation suite, and tool permissions independent of the chosen runtime. The [starting-point study](docs/starting-point-study.md) gives a provisional recommendation and records what still needs a trial. No framework is selected by affiliation alone.
+Start by comparing existing runtimes. Keep the task format, evidence format, evaluation suite, and tool permissions independent of the chosen runtime. Review the [framework landscape](docs/framework-landscape.md), then select two prototype configurations for the [comparison trial](docs/first-hive.md). The [starting-point study](docs/starting-point-study.md) records the evidence and selection method. No framework has a reserved finalist place or is selected by affiliation alone.
 
 ## Work groups
 

@@ -1,16 +1,16 @@
 # Starting-point study
 
-> Reviewed: 6 October 2026. Status: source review complete; runtime selection pending a comparison trial. No installations, inference runs, or performance benchmarks were performed for this study.
+> Reviewed: 6 October 2026. Status: initial source review expanded; finalist selection and runtime trials remain open. No installations, inference runs, or performance benchmarks were performed for this study.
 
 ## Recommendation
 
-Start with the task contract, shared evidence format, and evaluation harness. Then compare **LangGraph and Omega** as the first hive's coordination base. Use **OpenHands Software Agent SDK** as the single-agent software-maintenance baseline and as an alternative if it already meets the need. Keep **Microsoft Agent Framework** in reserve.
+Start with the task contract, shared evidence format, and evaluation harness. Review all 15 options in the [framework landscape](framework-landscape.md). Then select **two prototype configurations and one single-agent baseline** for the first runtime trial. A complete coding runtime can compete with a custom coordinator if it meets the same contract.
 
-The provisional engineering preference is a small LangGraph coordinator: explicit state transitions, persisted execution, and approval pauses fit the first planner/worker/reviewer workflow. This is a judgment from documented features, not a measured performance result. It requires a separate tool runner and a shared evidence schema.
+The earlier LangGraph–Omega shortlist was too narrow. PydanticAI, CrewAI, Agno, Google ADK, Strands, Mastra, OpenAI Agents SDK, CAMEL, Letta Code, and smolagents add relevant choices. Some supply explicit workflow control; others supply more of the team or coding runtime. No candidate has a reserved finalist place. The source review does not establish a winner.
 
-Omega has the strongest direct fit with the Hyperon ecosystem and should receive a fair trial. Its symbolic features must show value on the chosen tasks, or reduce integration effort, to justify choosing it. Do not select it just because the long-term plan mentions Hyperon.
+Omega has a direct fit with the Hyperon ecosystem. Its symbolic features must show value on the chosen tasks, or reduce integration effort, to justify choosing it. Do not select it just because the long-term plan mentions Hyperon. A different coordinator can still use Hyperon components later.
 
-The quickest coding baseline is likely OpenHands because it supplies an existing software-agent runtime. If that baseline meets the requirement and added coordination gives no useful gain, retain the simpler system and publish that result. Do not build three frameworks into one stack before this comparison.
+Use OpenHands Software Agent SDK as the proposed coding baseline because it supplies an existing software-agent runtime. Letta Code and smolagents are also relevant to this choice; record the reason if the source screen changes the baseline. If one agent meets the requirement and added coordination gives no useful gain, retain the simpler system and publish that result. Avoid combining frameworks before the task requires it.
 
 ## Separate the choices
 
@@ -22,16 +22,16 @@ There are three decisions, not one:
 
 Using LangGraph for coordination does not prevent testing an Omega worker or a Hyperon reasoning service later. Using Omega does not supply every deployment control automatically. The first trial should compare complete, minimal configurations with equivalent external interfaces.
 
-## Candidate comparison
+## Notes on the original five options
 
-The gaps below concern Colony's proposed hive. They are not claims that a project lacks all related capabilities.
+The full comparison is now in the [framework landscape](framework-landscape.md). These notes retain the more detailed review of the original five options. The gaps concern Colony's proposed hive; they are not claims that a project lacks all related capabilities.
 
 | Candidate | Documented strengths | Work Colony still needs | Proposed role |
 |---|---|---|---|
-| **Omega** | Existing MeTTa agent loop; reasoning integrations; model-provider options; Docker and test support. | Hive coordination, shared typed evidence, persistent symbolic state as required by the task, and validated patch approval and recovery. | Main finalist; possible symbolic worker later. |
-| **LangGraph** | Graph-based control flow, checkpoints, cross-thread stores, subgraphs, and explicit interrupts. | Coding tools, isolated tool execution, semantic schema, budget enforcement, and application-specific approval checks. | First coordination prototype; main finalist. |
+| **Omega** | Existing MeTTa agent loop; reasoning integrations; model-provider options; Docker and test support. | Hive coordination, shared typed evidence, persistent symbolic state as required by the task, and validated patch approval and recovery. | Candidate base or symbolic worker. |
+| **LangGraph** | Graph-based control flow, checkpoints, cross-thread stores, subgraphs, and explicit interrupts. | Coding tools, isolated tool execution, semantic schema, budget enforcement, and application-specific approval checks. | Candidate coordinator. |
 | **OpenHands Software Agent SDK** | Coding-agent tools, conversation persistence, subagent delegation, configurable action confirmation, and remote workspace options. | Colony evidence schema, independent release control, and any shared symbolic reasoning. | Single-agent baseline; can become the base if sufficient. |
-| **Microsoft Agent Framework** | Python and .NET agents, typed workflows, checkpointing, human-input events, and multiple model providers. | Colony-specific tools, evidence schema, deployment controls, and evaluation. | Reserve if team skills or a failed finalist requirement make it a better fit. |
+| **Microsoft Agent Framework** | Python and .NET agents, typed workflows, checkpointing, human-input events, and multiple model providers. | Colony-specific tools, evidence schema, deployment controls, and evaluation. | Candidate coordinator, including for a .NET team. |
 | **Hyperon directly** | MeTTa interpreter and atom/space interfaces; symbolic integration target. | Most of the agent runtime, coordination, and operations would need to be assembled. | Component experiment, not the first whole-hive base. |
 
 Primary sources: [Omega repository][omega], [LangGraph overview][langgraph], [OpenHands SDK][openhands], [Microsoft overview][maf], [Hyperon interpreter][hyperon].
@@ -52,7 +52,7 @@ LangGraph separates per-thread checkpoints from longer-term stores used across t
 
 An interrupt can pause a workflow for input. On resume, the interrupted node starts again from its beginning. Approval and tool operations must therefore tolerate replay without performing an external action twice. Use a persistent checkpointer and authenticated approval records. A graph checkpoint alone is not a filesystem rollback. [Interrupts][lg-interrupts]
 
-The framework is a coordinator, not a sandbox. The provisional preference assumes a small external tool runner, enforced resource limits, and a review gate outside the worker's write access. Scripted model and tool outputs can test those transitions without paid inference. [Testing][lg-test]
+The framework is a coordinator, not a sandbox. A Colony configuration would need an external tool runner, enforced resource limits, and a review gate outside the worker's write access. Scripted model and tool outputs can test those transitions without paid inference. [Testing][lg-test]
 
 ### OpenHands: a serious baseline, not only a demo
 
@@ -70,7 +70,9 @@ Hyperon's interpreter and Distributed AtomSpace integration are useful candidate
 
 ## Selection procedure
 
-Use the [first-hive protocol](first-hive.md). Screen candidates with scripted control tests first. Compare equivalent task inputs, tools, models, time limits, and total inference budgets. Record differences that cannot be held constant.
+Use the [landscape screen](framework-landscape.md#how-to-select-the-trial) to record source evidence, gaps, licenses, team fit, and estimated integration work for every option. Publish the reasons for selecting two prototype configurations and the baseline. The broader review is inexpensive compared with building and benchmarking every option.
+
+Then use the [first-hive protocol](first-hive.md). Check the selected configurations with scripted control tests before inference. Replace a failing configuration from the source-screened candidates if the trial budget permits; publish the failure. Compare equivalent task inputs, tools, models, time limits, and total inference budgets. Record differences that cannot be held constant.
 
 Keep two comparisons separate:
 
